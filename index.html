@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavascriptRockPaperScissors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="author" content="Samantha Bertous" />
+	<meta name="geo.country" content="US" />
+	<meta name="dc.language" content="en" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	
+	<link rel="stylesheet" href="styles.css" type="text/css" media="screen" charset="utf-8" />
+	
+	<style type="text/css" media="screen">
+	body{
+		width:100%;
+	}
+	.wrap{
+		margin: auto 20%;
+		text-align: center; 
+	}
+
+	.selected {
+		border: 1px solid black;
+	}
+	</style>
+</head>
+<body>
+
+	<div class="wrap" >
+		<h1>Javascript Rock Paper Scissors</h1>
+		<p class="">1) Choose your weapon</p> <!-- / -->
+		<p class="">2) Then I the COMPUTER will choice my weapon</p> <!-- / -->
+		<p class="">3) LET US SEE WHO WILL WIN!!!</p> <!-- / -->
+
+
+		<div id="weapons">
+			<img class="weapon" id="paper" src="images/paper.png" width="100" height="100" alt="Paper">
+			<img class="weapon" id="rock" src="images/rock.png" width="100" height="100" alt="Rock">
+			<img class="weapon" id="scissors" src="images/scissors.png" width="100" height="100" alt="Scissors">
+		</div>
+		<img id="computer-choice" >
+		<p id="winner"></p>
+	
+	</div>
+	<script type="text/javascript" charset="utf-8">
+		
+		/*
+		*  For working with img tags:
+		*
+		* Just as we can set the innerHTML of an element by assigning a value to the innerHTML property (element.innerHTML = "New content")
+		* We can set the value of HTML tag attributes the same way. So for images, if you want to set the value of the src attribte to something new
+		*
+		*/
+
+		// Uncomment below lines to see them work
+		var imageElement = document.querySelector("#computer-choice");
+		// imageElement.src = "images/paper.png";
+		
+		var randomRange = function(low, high) {			 	
+			 return Math.round(low+((high-low)*Math.random()));				
+		}
+		 	
+		var paperElement = document.querySelector("#paper");
+		var rockElement = document.querySelector("#rock");
+		var scissorsElement = document.querySelector("#scissors");
+		
+		var outputElement = document.querySelector("#winner");
+		
+		var userChoice;
+
+		var runGame = function () {
+			var computerChoice = randomRange(0,2);
+			
+			// 0 - paper
+			// 1 - rock
+			// 2 - scissors
+			
+			if (computerChoice === 0) {
+				imageElement.src = "images/paper.png";
+			} else if (computerChoice === 1) {
+				imageElement.src = "images/rock.png";
+			} else {
+				imageElement.src = "images/scissors.png";
+			}
+			
+			// Decide who wins
+			// Computer and User tie
+			if (userChoice === computerChoice) {
+				// User and computer tie
+				outputElement.innerHTML = "Tie"
+				
+			} else if ((userChoice === 0 && computerChoice === 1) ||
+				(userChoice === 1 && computerChoice === 2) ||
+				(userChoice === 2 && computerChoice === 0)) {
+				// User wins
+				outputElement.innerHTML = "User wins";
+			} else {
+				// computer wins
+				outputElement.innerHTML = "Computer wins";				
+			}
+		}
+		
+		paperElement.onclick = function () {
+			userChoice = 0;
+			runGame();
+			
+		}
+		
+		rockElement.onclick = function () {
+			userChoice = 1;
+			runGame();			
+		}
+		
+		scissorsElement.onclick = function () {
+			userChoice = 2;
+			runGame();			
+		}
+		
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
