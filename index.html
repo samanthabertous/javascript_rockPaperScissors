@@ -113,8 +113,8 @@
 		// };
 		
 		var userChoiceHandler = function (event) {	
-			console.dir(event);
-			console.dir(this);
+			//console.dir(event);
+			//console.dir(this);
 			// event.target is the element you clicked on
 			
 			if (this.id === paperElement.id) {
@@ -127,11 +127,12 @@
 		};		
 
 
-		paperElement.onclick = userChoiceHandler;
+		var weaponsElements = document.querySelectorAll(".weapon");
 		
-		rockElement.onclick = userChoiceHandler;
+		for (var i = 0; i < weaponElements.length; i = i + 1) {
+			weaponElements[i].onclick = userChoiceHandler;
+		}
 		
-		scissorsElement.onclick = userChoiceHandler;
 	</script>
 </body>
 </html>
