@@ -97,20 +97,41 @@
 				outputElement.innerHTML = "Computer wins";				
 			}
 		}
+
+		// var userChoiceHandler = function (event) {
+		// 	console.dir(event);
+		// 	console.dir(this);
+		// 	// event.target is the element you clicked on
+		//
+		// 	if (event.target.id === paperElement.id) {
+		// 		runGame(0);
+		// 	} else if (event.target.id === rockElement.id) {
+		// 		runGame(1);
+		// 	} else {
+		// 		runGame(2);
+		// 	}
+		// };
 		
-		paperElement.onclick = function () {			
-			runGame(0);			
-		}
+		var userChoiceHandler = function (event) {	
+			console.dir(event);
+			console.dir(this);
+			// event.target is the element you clicked on
+			
+			if (this.id === paperElement.id) {
+				runGame(0);
+			} else if (this.id === rockElement.id) {
+				runGame(1);	
+			} else {
+				runGame(2);
+			}
+		};		
+
+
+		paperElement.onclick = userChoiceHandler;
 		
-		rockElement.onclick = function () {
-			runGame(1);			
-		}
+		rockElement.onclick = userChoiceHandler;
 		
-		scissorsElement.onclick = function () {
-			runGame(2);			
-		}
-		
-		// console.log(computerChoice);
+		scissorsElement.onclick = userChoiceHandler;
 	</script>
 </body>
 </html>
