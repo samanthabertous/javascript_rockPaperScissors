@@ -98,40 +98,35 @@
 			}
 		}
 
-		// var userChoiceHandler = function (event) {
-		// 	console.dir(event);
-		// 	console.dir(this);
-		// 	// event.target is the element you clicked on
-		//
-		// 	if (event.target.id === paperElement.id) {
-		// 		runGame(0);
-		// 	} else if (event.target.id === rockElement.id) {
-		// 		runGame(1);
-		// 	} else {
-		// 		runGame(2);
-		// 	}
-		// };
+		var setSelectedClass = function(element) {
+			if (document.querySelector(".selected")){
+				document.querySelector(".selected").classList.remove("selected");					
+			}
+
+			element.classList.add("selected");
+		}
 		
 		var userChoiceHandler = function (event) {	
-			//console.dir(event);
-			//console.dir(this);
+			console.dir(event);
+			console.dir(this);
 			// event.target is the element you clicked on
+
 			
-			if (this.id === paperElement.id) {
+			if (event.target.id === "paper") {
+				setSelectedClass(event.target);
 				runGame(0);
-			} else if (this.id === rockElement.id) {
+			} else if (event.target.id === "rock") {
+				setSelectedClass(event.target);
 				runGame(1);	
-			} else {
+			} else if (event.target.id === "scissors") {
+				setSelectedClass(event.target);
 				runGame(2);
 			}
-		};		
+		};
 
-
-		var weaponsElements = document.querySelectorAll(".weapon");
+		var weaponsElementsContainer = document.querySelector("#weapons");
 		
-		for (var i = 0; i < weaponElements.length; i = i + 1) {
-			weaponElements[i].onclick = userChoiceHandler;
-		}
+		weaponsElementsContainer.addEventListener("click", userChoiceHandler);
 		
 	</script>
 </body>
