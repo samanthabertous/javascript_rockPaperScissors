@@ -57,9 +57,6 @@
 		*/
 
 		// Uncomment below lines to see them work
-		var imageElement = document.querySelector("#computer-choice");
-		// imageElement.src = "images/paper.png";
-		
 		var randomRange = function(low, high) {			 	
 			 return Math.round(low+((high-low)*Math.random()));				
 		}
@@ -67,14 +64,11 @@
 		var paperElement = document.querySelector("#paper");
 		var rockElement = document.querySelector("#rock");
 		var scissorsElement = document.querySelector("#scissors");
-		
-		var outputElement = document.querySelector("#winner");
-		
-		var userChoice;
-
-		var runGame = function () {
+				
+		var runGame = function (userChoice) {
 			var computerChoice = randomRange(0,2);
-			
+			var imageElement = document.querySelector("#computer-choice");
+			var outputElement = document.querySelector("#winner");				
 			// 0 - paper
 			// 1 - rock
 			// 2 - scissors
@@ -104,22 +98,19 @@
 			}
 		}
 		
-		paperElement.onclick = function () {
-			userChoice = 0;
-			runGame();
-			
+		paperElement.onclick = function () {			
+			runGame(0);			
 		}
 		
 		rockElement.onclick = function () {
-			userChoice = 1;
-			runGame();			
+			runGame(1);			
 		}
 		
 		scissorsElement.onclick = function () {
-			userChoice = 2;
-			runGame();			
+			runGame(2);			
 		}
 		
+		// console.log(computerChoice);
 	</script>
 </body>
 </html>
